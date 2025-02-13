@@ -168,14 +168,25 @@ function clearerror() {
 function negatives() {
   if (operation === undefined && y == undefined) {
     if (x !== undefined) {
-      x = "-".concat(x);
-      equation.innerHTML = x;
+      if (x.indexOf("-") === -1) {
+        x = "-".concat(x);
+        equation.innerHTML = x;
+      } else {
+        x = parseFloat(x) * -1;
+        equation.innerHTML = x;
+        x = x.toString();
+      }
     }
-  }
-  if (operation !== undefined && x !== undefined) { 
+  } else if (operation !== undefined && x !== undefined) {
     if (y !== undefined) {
-      y = "-".concat(y);
-      equation.innerHTML = y;
+      if (y.indexOf("-") === -1) {
+        y = "-".concat(y);
+        equation.innerHTML = y;
+      } else {
+        y = parseFloat(y) * -1;
+        equation.innerHTML = y;
+        y = y.toString();
+      }
     }
   }
 }
